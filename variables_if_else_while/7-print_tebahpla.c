@@ -12,4 +12,3 @@ for( int a=122;a<=97;a--)
 putchar(a);
 putchar('\n');
 }
-
