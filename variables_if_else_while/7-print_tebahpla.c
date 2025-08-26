@@ -1,14 +1,19 @@
 #include <stdio.h>
 
 /**
- * main - prints the lowercase alphabet in reverse
+ * main - Print the alphabet
  *
  * My function: loop
  *
  * Return: Always 0 (Success)
  */
-int main (void){
-for( int a=122;a<=97;a--)
-putchar(a);
-putchar('\n');
+
+int main(void)
+{
+	int a;
+
+	for (a = 25; a > -1; a--)
+		putchar(97 + a);
+	putchar('\n');
+	return (0);
 }
