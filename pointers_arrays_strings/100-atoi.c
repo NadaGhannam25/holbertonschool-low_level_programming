@@ -40,10 +40,6 @@ int _atoi(char *s)
 		return (0);
 
 	if (sign == 1)
-	{
-		if (result == INT_MIN)
-			return (INT_MIN);
 		return (-result);
-	}
 	return (result);
 }
