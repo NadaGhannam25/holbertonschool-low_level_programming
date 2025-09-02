@@ -1,20 +1,41 @@
 #include "main.h"
 
 /**
- * _strcpy - copies the string pointed to by src
- * @dest: pointer to destination buffer
- * @src: pointer to source string
+ * _atoi - Converts a string to an integer
+ * @s: String to be converted
  *
- * Return: pointer to dest
+ * Return: The integer value of the string, or 0 if no valid number is found
  */
-char *_strcpy(char *dest, char *src)
+int _atoi(char *s)
 {
-	int i;
+	int sign = 1;
+	int result = 0;
+	int i = 0;
+	int digit;
 
-	for (i = 0; src[i] != '\0'; i++)
-		dest[i] = src[i];
+	/* Skip non-digit characters and process signs */
+	while (s[i] && (s[i] < '0' || s[i] > '9'))
+	{
+		if (s[i] == '-')
+			sign *= -1;
+		else if (s[i] == '+')
+			sign *= 1;
+		i++;
+	}
 
-	dest[i] = '\0';
+	/* Convert digits to integer with overflow check */
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		digit = s[i] - '0';
+		if (result > (2147483647 - digit) / 10)
+		{
+			if (sign == 1)
+				return (2147483647);
+			return (-2147483648);
+		}
+		result = result * 10 + digit;
+		i++;
+	}
 
-	return (dest);
+	return (sign * result);
 }
