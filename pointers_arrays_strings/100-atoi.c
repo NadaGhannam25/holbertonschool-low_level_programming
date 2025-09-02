@@ -1,45 +1,41 @@
 #include "main.h"
-#include <limits.h>
 
 /**
- * _atoi - convert a string to an integer
- * @s: input string
+ * _atoi - Converts a string to an integer
+ * @s: String to be converted
  *
- * Return: integer value
+ * Return: The integer value of the string, or 0 if no valid number is found
  */
 int _atoi(char *s)
 {
-	int i = 0;
 	int sign = 1;
 	int result = 0;
+	int i = 0;
 	int digit;
-	int found = 0;
 
+	
 	while (s[i] && (s[i] < '0' || s[i] > '9'))
 	{
 		if (s[i] == '-')
 			sign *= -1;
 		else if (s[i] == '+')
-			;
+			sign *= 1;
 		i++;
 	}
 
+	
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		digit = s[i] - '0';
-		found = 1;
-
-		if (result < (INT_MIN + digit) / 10)
-			return (sign == 1 ? INT_MAX : INT_MIN);
-
-		result = result * 10 - digit;
+		if (result > (2147483647 - digit) / 10)
+		{
+			if (sign == 1)
+				return (2147483647);
+			return (-2147483648);
+		}
+		result = result * 10 + digit;
 		i++;
 	}
 
-	if (!found)
-		return (0);
-
-	if (sign == 1)
-		return (-result);
-	return (result);
+	return (sign * result);
 }
