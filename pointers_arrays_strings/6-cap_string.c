@@ -15,15 +15,12 @@ char *cap_string(char *s)
 	int i = 0;
 	char separators[] = " \t\n,;.!?\"(){}";
 
-
 	if (s[0] >= 'a' && s[0] <= 'z')
 		s[0] = s[0] - 32;
-
 	
 	while (s[i] != '\0')
 	{
 		int j = 0;
-
 		
 		while (separators[j] != '\0')
 		{
