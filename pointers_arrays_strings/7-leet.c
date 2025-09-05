@@ -1,35 +1,31 @@
 #include "main.h"
 
 /**
- * leet - encodes a string into 1337
- * @s: pointer to the string
+ * leet - Encodes a string into 1337 (leet) speak
+ * @str: The input string to be encoded
  *
- * Description: This function replaces letters in the string with
- * numbers according to 1337 rules:
- * 'a' or 'A' -> '4'
- * 'e' or 'E' -> '3'
- * 'o' or 'O' -> '0'
- * 't' or 'T' -> '7'
- * 'l' or 'L' -> '1'
+ * Replaces specific letters with numbers:
+ * a/A -> 4, e/E -> 3, o/O -> 0, t/T -> 7, l/L -> 1
+ * Uses at most one if statement and two loops
+ * No switch statements or ternary operations allowed
  *
- * Only one if is used. Two loops maximum. No switch or ternary.
- *
- * Return: pointer to the modified string
+ * Return: Pointer to the modified string
  */
-char *leet(char *s)
+char *leet(char *str)
 {
-	int i, j;
-	char letters[] = "aAeEoOtTlL";
-	char numbers[] = "4433007711";
+    int i;
+    char *leet_map = "aA4eE3oO0tT7lL1";
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		for (j = 0; letters[j] != '\0'; j++)
-		{
-			if (s[i] == letters[j])
-				s[i] = numbers[j];
-		}
-	}
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        int j;
 
-	return (s);
+        for (j = 0; leet_map[j] != '\0'; j += 3)
+        {
+            if (str[i] == leet_map[j] || str[i] == leet_map[j + 1])
+                str[i] = leet_map[j + 2];
+        }
+    }
+
+    return (str);
 }
