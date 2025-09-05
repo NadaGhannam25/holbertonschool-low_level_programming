@@ -1,29 +1,36 @@
-#include <stdio.h>
-#include <string.h>
-
+#include "main.h"
 /**
  * leet - encodes a string into 1337
+ * @s: pointer to the string
  *
- * @s: pointer to a char
+ * Description: This function replaces letters in the string with
+ * numbers according to 1337 rules:
+ * 'a' or 'A' -> '4'
+ * 'e' or 'E' -> '3'
+ * 'o' or 'O' -> '0'
+ * 't' or 'T' -> '7'
+ * 'l' or 'L' -> '1'
  *
- * Return: s
+ * You can only use one if, two loops max, no switch, no ternary.
+ *
+ * Return: pointer to the modified string
  */
-
 char *leet(char *s)
 {
-	char *r = s;
-	char a[] = { 'a', 'e', 'o', 't', 'l' };
-	int n[] = { 4, 3, 0, 7, 1 };
-	int i = 0;
+	int i, j;
+	char letters[] = "aAeEoOtTlL";
+	char numbers[] = "4433007711";
 
-	while (*s)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (i = 0; i < 5; i++)
+		for (j = 0; letters[j] != '\0'; j++)
 		{
-			if (*s == a[i] || *s == a[i] - 32)
-				*s = n[i] + '0';
+			if (s[i] == letters[j])
+			{
+				s[i] = numbers[j];
+			}
 		}
-		s++;
 	}
-	return (r);
+
+	return (s);
 }
