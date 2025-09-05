@@ -1,28 +1,28 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * main - check the code
+ * _strcmp - compares two strings
+ * @s1: first string
+ * @s2: second string
  *
- * Return: Always 0.
+ * Description: This function compares the string @s1 with
+ * the string @s2, character by character. It returns a value
+ * less than 0 if @s1 is less than @s2, 0 if they are equal,
+ * and greater than 0 if @s1 is greater than @s2.
+ *
+ * Return: an integer less than, equal to, or greater than 0
  */
-int main(void)
+int _strcmp(char *s1, char *s2)
 {
-    char s1[] = "Hello";
-    char s2[] = "World!";
+	int i = 0;
 
-    printf("%d\n", _strcmp(s1, s2));
-    printf("%d\n", _strcmp(s2, s1));
-    printf("%d\n", _strcmp(s1, s1));
-    return (0);
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+		{
+			return (s1[i] - s2[i]);
+		}
+		i++;
+	}
+
+	return (s1[i] - s2[i]);
 }
-julien@ubuntu:~/$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-main.c 3-strcmp.c -o 3-strcmp
-julien@ubuntu:~/$ ./3-strcmp 
--15
-15
-0
-julien@ubuntu:~/$ 
-Repo:
-
-GitHub repository: holbertonschool-low_level_programming
-Directory: pointers_arrays_strings
-File: 3-strcmp.c
