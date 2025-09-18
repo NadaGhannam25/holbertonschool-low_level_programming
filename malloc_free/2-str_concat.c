@@ -1,39 +1,53 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * str_concat - concatenates two strings
+ * str_concat - concatenates two strings.
  *
- * @s1: pointer to a char
- * @s2: pointer to a char
+ * @s1: first string
+ * @s2: second string
  *
- * Return: concatenates two strings
+ * Return: pointer to the newly allocated space in memory
  */
-
 char *str_concat(char *s1, char *s2)
 {
-	unsigned int j, l = 0;
-	char *t;
+int counter1, counter2, i, j;
+char *strTemp;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	t = malloc(sizeof(char) * (strlen(s1) + strlen(s2) + 1));
-	if (t == NULL)
-		return (NULL);
-	for (j = 0; j < (strlen(s1) + strlen(s2)); j++)
-	{
-		if (j < strlen(s1))
-			t[j] = s1[j];
-		else
-		{
-			t[j] = s2[l];
-			l++;
-		}
-	}
-	t[j] = '\0';
-	return (t);
+counter1 = 0;
+counter2 = 0;
+
+if (s1 == NULL)
+{
+s1 = "";
+}
+if (s2 == NULL)
+{
+s2 = "";
+}
+while (s1[counter1] != '\0')
+{
+counter1++;
+}
+while (s2[counter2] != '\0')
+{
+counter2++;
+}
+counter2++;
+strTemp = malloc(sizeof(char) * (counter1 + counter2));
+if (strTemp == NULL)
+{
+return (NULL);
+}
+for (i = 0; i < counter1; i++)
+{
+strTemp[i] = s1[i];
+}
+for (j = 0; j < counter2; j++)
+{
+strTemp[i + j] = s2[j];
+}
+strTemp[i + j] = '\0';
+return (strTemp);
 }
